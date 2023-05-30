@@ -1,2 +1,2 @@
 # Team-Koala---Weather-App
-A group project for Weather Application with REST API and React.
+A group project for Weather application with REST API and React.

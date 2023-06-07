@@ -11,13 +11,10 @@ public class WeatherForecastTest
 
     private readonly HttpClient _httpClient = new HttpClient()
     {
-        BaseAddress = new Uri("http://dev.kjeld.io:40300")
-    };
-
-    private readonly HttpClient _httpClientTwo = new HttpClient()
-    {
         BaseAddress = new Uri("http://dev.kjeld.io:20300")
     };
+
+    
 
 
     [Fact]
@@ -39,7 +36,7 @@ public class WeatherForecastTest
     public async Task HealthEndpoint_ReturnsOk()
     {
         // Act
-        var response = await _httpClientTwo.GetAsync("/health");
+        var response = await _httpClient.GetAsync("/health");
         var content = await response.Content.ReadAsStringAsync();
 
         // Verify the response

@@ -11,12 +11,12 @@ public class WeatherForecastTest
 
     private readonly HttpClient _httpClient = new HttpClient()
     {
-        BaseAddress = new Uri("https://dev.kjeld.io:40300")
+        BaseAddress = new Uri("http://dev.kjeld.io:40300")
     };
 
     private readonly HttpClient _httpClientTwo = new HttpClient()
     {
-        BaseAddress = new Uri("https://dev.kjeld.io:20300")
+        BaseAddress = new Uri("http://dev.kjeld.io:20300")
     };
 
 

@@ -40,6 +40,30 @@ public class Program
             return httpContext.Response.WriteAsJsonAsync(weather);
         });
 
+        app.MapGet("/favorites", (HttpContext httpContext) =>
+        {
+            var favoriteCity = httpContext.Items["FavoriteCity"] as string;
+            if (string.IsNullOrEmpty(favoriteCity))
+            {
+                httpContext.Response.StatusCode = 404;
+                return httpContext.Response.WriteAsync("Favorite city not found");
+            }
+
+            httpContext.Response.StatusCode = 200;
+            return httpContext.Response.WriteAsync(favoriteCity);
+        });
+
+        app.MapPost("/favorites", (HttpContext httpContext) =>
+        {
+            using var reader = new StreamReader(httpContext.Request.Body);
+            var city = reader.ReadToEnd();
+
+            httpContext.Items["FavoriteCity"] = city;
+            httpContext.Response.StatusCode = 200;
+            return httpContext.Response.WriteAsync("Favorite city saved");
+        });
+
+
         app.MapGet("/health", (HttpContext httpContext) =>
         {
             httpContext.Response.StatusCode = 200;

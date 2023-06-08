@@ -47,6 +47,7 @@ public class WeatherForecastTest
         // Assert
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.Equal("Favorite city saved", content);
+
     }
 
 
@@ -63,6 +64,7 @@ public class WeatherForecastTest
         // Assert
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
         Assert.Equal("Favorite city not found", content);
+
     }
 
 

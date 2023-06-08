@@ -36,7 +36,6 @@ public class WeatherForecastTest
     public async Task FavoritesEndpoint_PostSavesFavoriteCity()
     {
         // Arrange
-        var httpClient = new HttpClient();
         var favoriteCity = "Stockholm";
         var httpContent = new StringContent(favoriteCity, Encoding.UTF8, "text/plain");
 
@@ -53,9 +52,7 @@ public class WeatherForecastTest
     [Fact]
     public async Task FavoritesEndpoint_ReturnsNotFound()
     {
-        // Arrange
-        var client = new HttpClient();
-
+     
         // Act
         var response = await _httpClient.GetAsync("/favorites");
         var content = await response.Content.ReadAsStringAsync();

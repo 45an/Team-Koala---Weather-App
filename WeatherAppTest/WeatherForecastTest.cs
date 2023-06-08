@@ -33,6 +33,21 @@ public class WeatherForecastTest
     }
 
     [Fact]
+    public async Task FavoritesEndpoint_ReturnsNotFound()
+    {
+        // Arrange
+        var client = new HttpClient();
+
+        // Act
+        var response = await client.GetAsync($"{_httpClientTwo}/favorites");
+        var content = await response.Content.ReadAsStringAsync();
+
+        // Assert
+        Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+        Assert.Equal("Favorite city not found", content);
+    }
+
+    [Fact]
     public async Task HealthEndpoint_ReturnsOk()
     {
         // Act

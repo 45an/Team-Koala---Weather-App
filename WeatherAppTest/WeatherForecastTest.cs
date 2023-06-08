@@ -33,6 +33,24 @@ public class WeatherForecastTest
     }
 
     [Fact]
+    public async Task FavoritesEndpoint_PostSavesFavoriteCity()
+    {
+        // Arrange
+        var httpClient = new HttpClient();
+        var favoriteCity = "Stockholm";
+        var httpContent = new StringContent(favoriteCity, Encoding.UTF8, "text/plain");
+
+        // Act
+        var response = await httpClient.PostAsync($"{_httpClientTwo.BaseAddress}/favorites", httpContent);
+        var content = await response.Content.ReadAsStringAsync();
+
+        // Assert
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal("Favorite city saved", content);
+    }
+
+
+    [Fact]
     public async Task FavoritesEndpoint_ReturnsNotFound()
     {
         // Arrange
@@ -46,6 +64,8 @@ public class WeatherForecastTest
         Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
         Assert.Equal("Favorite city not found", content);
     }
+
+
 
     [Fact]
     public async Task HealthEndpoint_ReturnsOk()

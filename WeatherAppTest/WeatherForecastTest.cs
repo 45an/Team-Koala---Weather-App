@@ -41,7 +41,7 @@ public class WeatherForecastTest
         var httpContent = new StringContent(favoriteCity, Encoding.UTF8, "text/plain");
 
         // Act
-        var response = await httpClient.PostAsync($"{_httpClient.BaseAddress}/favorites", httpContent);
+        var response = await _httpClient.PostAsync($"/favorites", httpContent);
         var content = await response.Content.ReadAsStringAsync();
 
         // Assert
@@ -57,7 +57,7 @@ public class WeatherForecastTest
         var client = new HttpClient();
 
         // Act
-        var response = await client.GetAsync($"{_httpClient}/favorites");
+        var response = await _httpClient.GetAsync("/favorites");
         var content = await response.Content.ReadAsStringAsync();
 
         // Assert

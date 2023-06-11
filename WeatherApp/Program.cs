@@ -45,7 +45,7 @@ public class Program
             var favoriteCity = httpContext.Items["FavoriteCity"] as string;
             if (string.IsNullOrEmpty(favoriteCity))
             {
-                httpContext.Response.StatusCode = 404;
+                httpContext.Response.StatusCode = 405;
                 return httpContext.Response.WriteAsync("Favorite city not found");
             }
 

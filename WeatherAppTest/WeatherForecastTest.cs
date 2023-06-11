@@ -29,7 +29,6 @@ public class WeatherForecastTest
         Assert.Contains("20", content);
         Assert.Contains("70", content);
         Assert.Contains("10", content);
-
     }
 
 

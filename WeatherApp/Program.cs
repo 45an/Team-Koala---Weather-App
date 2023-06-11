@@ -37,7 +37,6 @@ public class Program
                 Humidity = 70,
                 Wind = 10,
                 Date = DateTime.Today
-
             };
 
             httpContext.Response.StatusCode = 200;

@@ -38,12 +38,12 @@ public class Program
                 Wind = 10,
                 Date = DateTime.Today
             };
+
                    
             httpContext.Response.StatusCode = 200;
             return httpContext.Response.WriteAsJsonAsync(weather);
         });
-
-
+      
 
         app.MapGet("/health", (HttpContext httpContext) =>
         {

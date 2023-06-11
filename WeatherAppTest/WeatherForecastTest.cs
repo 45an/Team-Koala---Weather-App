@@ -31,9 +31,7 @@ public class WeatherForecastTest
         Assert.Contains("10", content);       
     }
 
-
-    
-
+  
     [Fact]
     public async Task HealthEndpoint_ReturnsOk()
     {

@@ -33,7 +33,7 @@ public class Program
                 City = "Stockholm",
                 Temperature = 20,
                 Humidity = 70,
-                Wind = 10
+                Wind = 10      
             };
 
             httpContext.Response.StatusCode = 200;
@@ -43,7 +43,7 @@ public class Program
         app.MapGet("/health", (HttpContext httpContext) =>
         {
             httpContext.Response.StatusCode = 200;
-            return httpContext.Response.WriteAsync("API is running.");
+            return httpContext.Response.WriteAsync("API is running.");    
         });
 
         app.Run();

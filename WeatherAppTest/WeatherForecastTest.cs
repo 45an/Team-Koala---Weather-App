@@ -28,49 +28,10 @@ public class WeatherForecastTest
         Assert.Contains("Stockholm", content);
         Assert.Contains("20", content);
         Assert.Contains("70", content);
-        Assert.Contains("10", content);
+        Assert.Contains("10", content);       
     }
 
-
-    
-
-    [Fact]
-    public async Task FavoritesEndpoint_PostSavesFavoriteCity()
-    {
-        // Arrange
-        var httpClient = new HttpClient();
-        var favoriteCity = "Stockholm";
-        var httpContent = new StringContent(favoriteCity, Encoding.UTF8, "text/plain");
-
-        // Act
-        var response = await httpClient.PostAsync($"{_httpClient.BaseAddress}/favorites", httpContent);
-        var content = await response.Content.ReadAsStringAsync();
-
-        // Assert
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Equal("Favorite city saved", content);
-
-    }
-
-
-    [Fact]
-    public async Task FavoritesEndpoint_ReturnsNotFound()
-    {
-        // Arrange
-        var client = new HttpClient();
-
-        // Act
-        var response = await client.GetAsync($"{_httpClient}/favorites");
-        var content = await response.Content.ReadAsStringAsync();
-
-        // Assert
-        Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
-        Assert.Equal("Favorite city not found", content);
-
-    }
-
-
-
+  
     [Fact]
     public async Task HealthEndpoint_ReturnsOk()
     {

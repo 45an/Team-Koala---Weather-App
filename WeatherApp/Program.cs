@@ -39,23 +39,11 @@ public class Program
                 Date = DateTime.Today
             };
 
+                   
             httpContext.Response.StatusCode = 200;
             return httpContext.Response.WriteAsJsonAsync(weather);
         });
-
-        app.MapGet("/weather/stockholm", (HttpContext httpContext) =>
-        {
-            var weather = new WeatherForecast
-            {
-                City = "Stockholm",
-                Temperature = 20,
-                Humidity = 70,
-                Wind = 10
-            };
-
-            httpContext.Response.StatusCode = 200;
-            return httpContext.Response.WriteAsJsonAsync(weather);
-        });
+      
 
         app.MapGet("/health", (HttpContext httpContext) =>
         {

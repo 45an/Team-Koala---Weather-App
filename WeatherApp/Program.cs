@@ -33,7 +33,8 @@ public class Program
                 City = "Stockholm",
                 Temperature = 20,
                 Humidity = 70,
-                Wind = 10      
+                Wind = 10
+                
             };
 
             httpContext.Response.StatusCode = 200;

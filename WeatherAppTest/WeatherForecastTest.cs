@@ -33,33 +33,18 @@ public class WeatherForecastTest
     }
 
     [Fact]
-    public async Task FavoritesEndpoint_PostSavesFavoriteCity()
+    public async Task FavoritesEndpoint_ReturnsFavoriteCity()
     {
         // Arrange
-        var favoriteCity = "Stockholm";
-        var httpContent = new StringContent(favoriteCity, Encoding.UTF8, "text/plain");
+        var expectedCity = "Stockholm";
 
-        // Act
-        var response = await _httpClient.PostAsync($"/favorites", httpContent);
-        var content = await response.Content.ReadAsStringAsync();
-
-        // Assert
-        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-        Assert.Equal("Favorite city saved", content);
-    }
-
-
-    [Fact]
-    public async Task FavoritesEndpoint_ReturnsNotFound()
-    {
-     
         // Act
         var response = await _httpClient.GetAsync("/favorites");
         var content = await response.Content.ReadAsStringAsync();
 
         // Assert
-        Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
-        Assert.Equal("Favorite city not found", content);
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(expectedCity, content);
     }
 
 

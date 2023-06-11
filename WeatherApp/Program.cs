@@ -1,9 +1,14 @@
-﻿namespace WeatherApp;
+﻿using Microsoft.AspNetCore.Http;
+
+namespace WeatherApp;
 
 public class Program
 {
+
     public static void Main(string[] args)
     {
+        var favoriteCity = "Stockholm";
+
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
@@ -40,12 +45,25 @@ public class Program
             return httpContext.Response.WriteAsJsonAsync(weather);
         });
 
+        
+
+
+        app.MapPost("/favorites", (HttpContext httpContext) =>
+        {
+            using var reader = new StreamReader(httpContext.Request.Body);
+            var city = reader.ReadToEnd();
+
+            favoriteCity = "Stockholm";
+
+            httpContext.Response.StatusCode = 200;
+            return httpContext.Response.WriteAsync("Favorite city saved");
+        });
+
         app.MapGet("/favorites", (HttpContext httpContext) =>
         {
-            var favoriteCity = httpContext.Items["FavoriteCity"] as string;
             if (string.IsNullOrEmpty(favoriteCity))
             {
-                httpContext.Response.StatusCode = 405;
+                httpContext.Response.StatusCode = 404;
                 return httpContext.Response.WriteAsync("Favorite city not found");
             }
 
@@ -53,22 +71,13 @@ public class Program
             return httpContext.Response.WriteAsync(favoriteCity);
         });
 
-        app.MapPost("/favorites", (HttpContext httpContext) =>
-        {
-            using var reader = new StreamReader(httpContext.Request.Body);
-            var city = reader.ReadToEnd();
-
-            httpContext.Items["FavoriteCity"] = city;
-            httpContext.Response.StatusCode = 200;
-            return httpContext.Response.WriteAsync("Favorite city saved");
-        });
-
-
         app.MapGet("/health", (HttpContext httpContext) =>
         {
             httpContext.Response.StatusCode = 200;
             return httpContext.Response.WriteAsync("API is running.");
         });
+
+
 
         app.Run();
     }

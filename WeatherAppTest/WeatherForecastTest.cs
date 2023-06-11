@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Text;
-using System.Text.Json;
 
 namespace WeatherAppTest;
 
@@ -31,6 +30,9 @@ public class WeatherForecastTest
         Assert.Contains("70", content);
         Assert.Contains("10", content);
     }
+
+
+    
 
     [Fact]
     public async Task FavoritesEndpoint_PostSavesFavoriteCity()

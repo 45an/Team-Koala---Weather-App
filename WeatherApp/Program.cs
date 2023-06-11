@@ -9,7 +9,7 @@ public class Program
         // Add services to the container.
         builder.Services.AddAuthorization();
 
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
@@ -25,6 +25,23 @@ public class Program
         //app.UseHttpsRedirection();
 
         app.UseAuthorization();
+        
+
+        app.MapGet("/weather/stockholm", (HttpContext httpContext) =>
+        {
+            var weather = new WeatherForecast
+            {
+                
+                City = "Stockholm",
+                Temperature = 20,
+                Humidity = 70,
+                Wind = 10,
+                Date = DateTime.Today
+            };
+
+            httpContext.Response.StatusCode = 200;
+            return httpContext.Response.WriteAsJsonAsync(weather);
+        });
 
         app.MapGet("/weather/stockholm", (HttpContext httpContext) =>
         {
@@ -46,6 +63,7 @@ public class Program
             return httpContext.Response.WriteAsync("API is running.");
         });
 
+        
         app.Run();
     }
 }

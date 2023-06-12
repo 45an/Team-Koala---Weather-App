@@ -32,8 +32,6 @@ public class WeatherForecastTest
     }
 
 
-    
-
     [Fact]
     public async Task HealthEndpoint_ReturnsOk()
     {

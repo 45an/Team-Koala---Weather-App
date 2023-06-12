@@ -31,7 +31,6 @@ public class Program
         //app.UseHttpsRedirection();
 
         app.UseAuthorization();
-        
 
         app.MapGet("/weather/stockholm", (HttpContext httpContext) =>
         {
@@ -50,12 +49,12 @@ public class Program
         });
 
 
-
         app.MapGet("/health", (HttpContext httpContext) =>
         {
             httpContext.Response.StatusCode = 200;
             return httpContext.Response.WriteAsync("API is running.");
         });
+
 
         app.UseCors();
         app.Run();

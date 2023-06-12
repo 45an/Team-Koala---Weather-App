@@ -13,6 +13,12 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        //services cors
+        builder.Services.AddCors(p => p.AddDefaultPolicy(builder =>
+        {
+            builder.WithOrigins().AllowAnyMethod().AllowAnyHeader();
+        }));
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -25,7 +31,6 @@ public class Program
         //app.UseHttpsRedirection();
 
         app.UseAuthorization();
-        
 
         app.MapGet("/weather/stockholm", (HttpContext httpContext) =>
         {
@@ -38,12 +43,11 @@ public class Program
                 Wind = 10,
                 Date = DateTime.Today
             };
-
                    
             httpContext.Response.StatusCode = 200;
             return httpContext.Response.WriteAsJsonAsync(weather);
         });
-      
+
 
         app.MapGet("/health", (HttpContext httpContext) =>
         {
@@ -51,7 +55,8 @@ public class Program
             return httpContext.Response.WriteAsync("API is running.");
         });
 
-        
+
+        app.UseCors();
         app.Run();
     }
 }

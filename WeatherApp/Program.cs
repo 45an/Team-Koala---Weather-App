@@ -13,6 +13,12 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
+        //services cors
+        builder.Services.AddCors(p => p.AddDefaultPolicy(builder =>
+        {
+            builder.WithOrigins().AllowAnyMethod().AllowAnyHeader();
+        }));
+
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -51,7 +57,7 @@ public class Program
             return httpContext.Response.WriteAsync("API is running.");
         });
 
-        
+        app.UseCors();
         app.Run();
     }
 }

@@ -29,7 +29,7 @@ public class Program
         }
 
         //app.UseHttpsRedirection();
-
+        app.UseCors();
         app.UseAuthorization();
 
         app.MapGet("/weather/stockholm", (HttpContext httpContext) =>
@@ -56,7 +56,7 @@ public class Program
         });
 
 
-        app.UseCors();
+      
         app.Run();
     }
 }

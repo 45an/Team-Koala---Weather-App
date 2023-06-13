@@ -10,7 +10,7 @@ public class WeatherForecastTest
 
     private readonly HttpClient _httpClient = new HttpClient()
     {
-        BaseAddress = new Uri("http://dev.kjeld.io:20300")
+        BaseAddress = new Uri("http://localhost:20300")
     };
 
     

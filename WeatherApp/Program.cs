@@ -38,7 +38,7 @@ public class Program
             {
                 
                 City = "Stockholm",
-                Temperature = 20,
+                Temperature = 22,
                 Humidity = 70,
                 Wind = 10,
                 Date = DateTime.Today

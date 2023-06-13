@@ -1,10 +1,18 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 
 namespace WeatherAppTest;
-
-
+internal record Weather(string Date, string City , int Temperature, int Humidity, int Wind);
+/*
+ * 	"date": "2023-06-13T00:00:00+02:00",
+	"city": "Stockholm",
+	"temperature": 20,
+	"humidity": 70,
+	"wind": 10,
+	"summary": null
+ */
 public class WeatherForecastTest
 {
 
@@ -13,22 +21,31 @@ public class WeatherForecastTest
         BaseAddress = new Uri("http://localhost:20300")
     };
 
-    
 
 
     [Fact]
     public async Task WeatherEndpoint_ReturnsWeatherData()
     {
-        // Act
+        // Arrange.
+        var expectedStatusCode = System.Net.HttpStatusCode.OK;
+        var expectedContent = new Weather("2023-06-13T00:00:00+02:00", "Stockholm", 22, 70,10);
+        var stopwatch = Stopwatch.StartNew();
+
+        // Act.
         var response = await _httpClient.GetAsync("/weather/stockholm");
+
+        // Assert.
+        await TestHelpers.AssertResponseWithContentAsync(stopwatch, response, expectedStatusCode, expectedContent);
+        // Act
+        
         var content = await response.Content.ReadAsStringAsync();
 
-        // Assert
+       /* // Assert
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.Contains("Stockholm", content);
         Assert.Contains("20", content);
         Assert.Contains("70", content);
-        Assert.Contains("10", content);       
+        Assert.Contains("10", content);       */
     }
 
 

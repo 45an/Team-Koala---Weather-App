@@ -8,66 +8,63 @@ import {
   MDBRow,
   MDBTypography,
 } from "mdb-react-ui-kit";
+import "./App.css";
+import "mdb-react-ui-kit/dist/css/mdb.min.css";
+import "./index.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWind } from "@fortawesome/free-solid-svg-icons";
+import { faDroplet } from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Basic() {
   return (
-    <section className="vh-100" style={{ backgroundColor: "#4B515D" }}>
+    <section className="vh-100" >
       <MDBContainer className="h-100">
         <MDBRow className="justify-content-center align-items-center h-100">
-          <MDBCol md="8" lg="6" xl="4">
-            <MDBCard style={{ color: "#4B515D", borderRadius: "35px" }}>
+          <MDBCol md="8" lg="6" xl="4" >
+            <MDBCard style={{ color: "black", borderRadius: "35px"}}
+            >
               <MDBCardBody className="p-4">
                 <div className="d-flex">
-                  <MDBTypography tag="h6" className="flex-grow-1">
-                    Warsaw
+                  <MDBTypography tag="h6" className="flex-grow-1" style={{fontSize: '23px'}}>
+                   Stockholm
                   </MDBTypography>
-                  <MDBTypography tag="h6">15:07</MDBTypography>
+                  
                 </div>
 
                 <div className="d-flex flex-column text-center mt-5 mb-4">
                   <MDBTypography
                     tag="h6"
-                    className="display-4 mb-0 font-weight-bold"
+                    className="display-3 mb-0 font-weight-bold"
                     style={{ color: "#1C2331" }}
                   >
                     {" "}
-                    13°C{" "}
+                    23°C{" "}
                   </MDBTypography>
                   <span className="small" style={{ color: "#868B94" }}>
-                    Stormy
+                    Sunny
                   </span>
                 </div>
 
-                <div className="d-flex align-items-center">
+                <div className="d-flex align-items-space between">
                   <div className="flex-grow-1" style={{fontSize: '1rem'}}>
                     <div>
-                      <MDBIcon
-                        fas
-                        icon="wind fa-fw"
-                        style={{ color: "#868B94" }}
-                      />{" "}
-                      <span className="ms-1"> 40 km/h</span>
+                    <FontAwesomeIcon icon={faWind}  />
+                      <span className="ms-1"> 2 km/h</span>
                     </div>
                     <div>
-                      <MDBIcon
-                        fas
-                        icon="tint fa-fw"
-                        style={{ color: "#868B94" }}
-                      />{" "}
-                      <span className="ms-1"> 84% </span>
+                    <FontAwesomeIcon icon={faDroplet}/>
+                      <span className="ms-1"> 40% </span>
                     </div>
                     <div>
-                      <MDBIcon
-                        fas
-                        icon="sun fa-fw"
-                        style={{ color: "#868B94" }}
-                      />{" "}
+                    <FontAwesomeIcon icon={faSun}/>
                       <span className="ms-1"> 0.2h </span>
                     </div>
                   </div>
                   <div>
                     <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu1.webp"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu3.webp"
                       width="100px"
                     />
                   </div>

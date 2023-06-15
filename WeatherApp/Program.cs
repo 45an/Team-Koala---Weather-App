@@ -56,7 +56,7 @@ public class Program
                 Temperature = 22,
                 Humidity = 70,
                 Wind = 10,
-                
+                 
             };
                    
             httpContext.Response.StatusCode = 200;

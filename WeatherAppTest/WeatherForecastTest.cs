@@ -13,7 +13,7 @@ internal record Weather(string City , int Temperature, int Humidity, int Wind);
 	"temperature": 20,
 	"humidity": 70,
 	"wind": 10,
-	"summary": null
+	"summary": null 
  */
 public class WeatherForecastTest
 {

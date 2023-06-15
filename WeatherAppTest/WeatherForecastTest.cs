@@ -2,9 +2,11 @@
 using System.Net;
 using System.Net.Http;
 using System.Text;
+using Newtonsoft.Json;
+
 
 namespace WeatherAppTest;
-internal record Weather(string Date, string City , int Temperature, int Humidity, int Wind);
+internal record Weather(string City , int Temperature, int Humidity, int Wind);
 /*
  * 	"date": "2023-06-13T00:00:00+02:00",
 	"city": "Stockholm",
@@ -28,7 +30,7 @@ public class WeatherForecastTest
     {
         // Arrange.
         var expectedStatusCode = System.Net.HttpStatusCode.OK;
-        var expectedContent = new Weather("2023-06-13T00:00:00+02:00", "Stockholm", 22, 70,10);
+        var expectedContent = new Weather("Stockholm", 22, 70,10);
         var stopwatch = Stopwatch.StartNew();
 
         // Act.
@@ -47,6 +49,41 @@ public class WeatherForecastTest
         Assert.Contains("70", content);
         Assert.Contains("10", content);       */
     }
+
+    
+
+    // Update the test code
+    [Fact]
+    public async Task TimeEndpoint_ReturnsCurrentTime()
+    {
+        // Act
+        var response = await _httpClient.GetAsync("/time");
+        var content = await response.Content.ReadAsStringAsync();
+
+        // Assert
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+        TimeResponse time;
+        try
+        {
+            time = JsonConvert.DeserializeObject<TimeResponse>(content);
+        }
+        catch (JsonException ex)
+        {
+            // Handle JSON deserialization error
+            Assert.True(false, $"Error deserializing JSON response: {ex.Message}");
+            return;
+        }
+
+        var currentHour = DateTime.Now.Hour;
+        var currentMinute = DateTime.Now.Minute;
+        var currentSecond = DateTime.Now.Second;
+
+        Assert.Equal(currentHour, time.Hour);
+        Assert.Equal(currentMinute, time.Minute);
+        Assert.Equal(currentSecond, time.Second);
+    }
+
 
 
     [Fact]

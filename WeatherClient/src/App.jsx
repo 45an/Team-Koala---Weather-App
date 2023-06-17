@@ -89,7 +89,7 @@ function WeatherCall() {
   <div className="ml-auto">
     <img
       src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu3.webp"
-      width="90px"
+      width="90px"    
       alt="weather"
     />
   </div>

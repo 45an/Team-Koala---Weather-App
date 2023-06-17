@@ -73,7 +73,7 @@ function WeatherCall() {
                     {data.weather}
                   </span>
                   <span className="small" style={{ color: "#868B94" }}>
-                    Sunny bosko
+                    Sunny 
                   </span>
                 </div>
 

@@ -48,7 +48,7 @@ function WeatherCall() {
           <MDBCol md="8" lg="6" xl="4">
             <MDBCard style={{ color: "#4B515D", borderRadius: "35px" }}>
               <MDBCardBody className="p-4">
-                <div className="d-flex">
+              <div className="d-flex">
                   <MDBTypography
                     tag="h6"
                     className="flex-grow-1"
@@ -59,7 +59,7 @@ function WeatherCall() {
                   <MDBTypography tag="h6" style={{ fontSize: "23px" }}>
                     {time.hour}:{time.minute}
                   </MDBTypography>
-                </div>
+                </div> 
 
                 <div className="d-flex flex-column text-center mt-5 mb-4">
                   <MDBTypography
@@ -73,29 +73,27 @@ function WeatherCall() {
                     {data.weather}
                   </span>
                   <span className="small" style={{ color: "#868B94" }}>
-                    Sunny
+                    Sunny 
                   </span>
                 </div>
 
-                <div className="d-flex align-items-space between">
-                  <div className="flex-grow-1" style={{ fontSize: "1rem" }}>
-                    <div>
-                      <FontAwesomeIcon icon={faWind} />
-                      <span className="ms-1"> {data.wind} km/h</span>{" "}
-                    </div>
-                    <div>
-                      <FontAwesomeIcon icon={faDroplet} />
-                      <span className="ms-1"> {data.humidity}%</span>{" "}
-                    </div>
-                  </div>
-                  <div>
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu3.webp"
-                      width="100px"
-                      alt="weather"
-                    />
-                  </div>
-                </div>
+             <div className="d-flex justify-content-between align-items-center" style={{ marginLeft: "15px" }}>
+  <div className="d-flex flex-column text-center" style={{ marginTop: "20px" }}>
+    <FontAwesomeIcon icon={faWind} />
+    <span className="ms-1"> {data.wind} km/h</span>
+  </div>
+  <div className="d-flex flex-column text-center" style={{ marginTop: "20px" }}>
+    <FontAwesomeIcon icon={faDroplet} />
+    <span className="ms-1"> {data.humidity}%</span>
+  </div>
+  <div className="ml-auto">
+    <img
+      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu3.webp"
+      width="90px"    
+      alt="weather"
+    />
+  </div>
+</div>
               </MDBCardBody>
             </MDBCard>
           </MDBCol>

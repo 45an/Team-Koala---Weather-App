@@ -1,11 +1,13 @@
 #root {
-
-  margin:auto;
+  margin: auto;
   padding: 2%;
   text-align: center;
-background-image: url(https://images6.alphacoders.com/401/401127.jpg);
-background-repeat: no-repeat;
+  background-image: url(https://stadshuset.stockholm/optimized/c2x1_xxlarge/globalassets/stadshuset/startsida/trygg_sthlm_sep_night_19_033-2_mindre_ny.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
@@ -14,10 +16,73 @@ background-repeat: no-repeat;
 }
 
 .card {
-  padding: 2em;
+  padding: 1em;
+  margin-left: 1em;
   font-size: large;
 }
 
 .read-the-docs {
   color: #888;
 }
+
+.flex-grow-1{
+  display:flex;
+  align-items: left;
+}
+
+.display-3 {
+   margin-top: -5px;
+}
+
+.small{
+  padding-top: 1em;
+}
+
+@keyframes droplet-fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.droplet-animation {
+  animation: droplet-fall 1s ease-in-out infinite;
+}
+
+@keyframes wind-enter {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.wind-animation {
+  animation: wind-enter 1.5s ease-in-out infinite;
+}
+
+@keyframes image-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.image-animation {
+  animation: image-pulse 1s ease-in-out infinite;
+}
+
+
+

@@ -26,8 +26,8 @@ function WeatherCall() {
     const fetchData = async () => {
       try {
         const [weatherResponse, timeResponse] = await Promise.all([
-          axios.get("http://localhost:20300/weather/stockholm"),
-          axios.get("http://localhost:20300/time"),
+          axios.get("http://dev.kjeld.io:20300/weather/stockholm"),
+          axios.get("http://dev.kjeld.io:20300/time"),
         ]);
 
         setData(weatherResponse.data);
@@ -44,19 +44,20 @@ function WeatherCall() {
   return (
     <section className="vh-100">
       <MDBContainer className="h-100">
-        <MDBRow className="justify-content-center align-items-center h-100">
+      <MDBRow className="justify-content-center align-items-center h-100">
           <MDBCol md="8" lg="6" xl="4">
-            <MDBCard style={{ color: "#4B515D", borderRadius: "35px" }}>
+            <MDBCard style={{ color: "#4B515D", borderRadius: "50px" }}>
               <MDBCardBody className="p-4">
               <div className="d-flex">
                   <MDBTypography
                     tag="h6"
                     className="flex-grow-1"
-                    style={{ fontSize: "23px" }}
+                    style={{ fontSize: "20px", fontWeight: "bold"}}
+
                   >
                     {data.city}
                   </MDBTypography>
-                  <MDBTypography tag="h6" style={{ fontSize: "23px" }}>
+                  <MDBTypography tag="h6" style={{ fontSize: "20px", fontWeight: "bold" }}>
                     {time.hour}:{time.minute}
                   </MDBTypography>
                 </div> 
@@ -72,27 +73,34 @@ function WeatherCall() {
                   <span className="small" style={{ color: "#868B94" }}>
                     {data.weather}
                   </span>
-                  <span className="small" style={{ color: "#868B94" }}>
+                  <span className="small" style={{ color: "#868B94", fontWeight: "bold" }}>
                     Sunny 
                   </span>
                 </div>
 
-             <div className="d-flex justify-content-between align-items-center" style={{ marginLeft: "15px" }}>
-  <div className="d-flex flex-column text-center" style={{ marginTop: "20px" }}>
-    <FontAwesomeIcon icon={faWind} />
-    <span className="ms-1"> {data.wind} km/h</span>
-  </div>
-  <div className="d-flex flex-column text-center" style={{ marginTop: "20px" }}>
-    <FontAwesomeIcon icon={faDroplet} />
-    <span className="ms-1"> {data.humidity}%</span>
-  </div>
-  <div className="ml-auto">
-    <img
-      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu3.webp"
-      width="90px"    
-      alt="weather"
-    />
-  </div>
+                <div className="d-flex justify-content-start align-items-center">
+                <div className="d-flex flex-column text-center" style={{ marginTop: "20px" }}>
+  <FontAwesomeIcon icon={faWind} className="wind-animation" />
+  <span className="ms-1"> {data.wind} km/h </span>
+</div>
+<div className="ml-auto">
+  <img
+    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-weather/ilu3.webp"
+    width="115px"
+    alt="weather"
+    className="image-animation"
+    style={{ marginRight: "15px" }}
+  />
+</div>
+
+  <div className="d-flex flex-column text-center mt-5 mb-4">
+  <FontAwesomeIcon
+    icon={faDroplet}
+    className="droplet-animation"
+  />
+  <span className="ms-1"> {data.humidity}%</span>
+</div>
+
 </div>
               </MDBCardBody>
             </MDBCard>

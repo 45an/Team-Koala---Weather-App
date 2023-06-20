@@ -99,10 +99,9 @@ Example Response:
 ```json
 {
   "city": "Stockholm",
-  "temperature": 20,
+  "temperature": 22,
   "humidity": 70,
   "wind": 10,
-  "weather": "Cloudy"
 }
 
 ```
